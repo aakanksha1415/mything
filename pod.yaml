@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecr-demoimg
+  labels:
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: back-end
+          image: 876724398547.dkr.ecr.ap-northeast-1.amazonaws.com/ecr-demoimg:BUILD_ID
+          ports:
+            - containerPort: 8080

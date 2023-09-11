@@ -1,0 +1,14 @@
+---
+  - name: "Run Terraform "
+    hosts: localhost
+    connection: local 
+    tasks:
+
+    - name: "Destroy Terraform"
+      shell: terraform destroy -auto-approve   
+      register: destroy
+    
+    - name: "Display output: Destroy Terraform"
+      debug:
+        msg: "{{ destroy.stdout }}"
+      

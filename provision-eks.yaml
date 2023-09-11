@@ -1,0 +1,29 @@
+---
+  - name: "Run Terraform "
+    hosts: localhost
+    connection: local 
+    tasks:
+
+    - name: "Init Terraform"
+      shell: terraform init    
+      register: init
+    
+    - name: "Display output: Init Terraform"
+      debug:
+        msg: "{{ init.stdout }}"
+        
+    - name: "Plan Terraform"
+      shell: terraform plan    
+      register: plan
+    
+    - name: "Display output: Plan Terraform"
+      debug:
+        msg: "{{ plan.stdout }}"
+        
+    - name: "Plan Terraform"
+      shell: terraform apply -auto-approve    
+      register: apply
+    
+    - name: "Display output: Plan Terraform"
+      debug:
+        msg: "{{ apply.stdout }}"
